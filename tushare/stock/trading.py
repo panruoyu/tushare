@@ -627,4 +627,7 @@ def _code_to_symbol(code):
         if len(code) != 6 :
             return ''
         else:
-            return 'sh%s'%code if code[:1] in ['5', '6', '9'] else 'sz%s'%code
+            if (code[:1] in ['5', '6', '9'] or code[:3] in ['110', '113', '132']):#110，113，132开头的是上交所转债的代码
+                return 'sh%s'%code
+            else:
+                return 'sz%s'%code
